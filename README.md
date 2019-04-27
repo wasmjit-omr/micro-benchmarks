@@ -1,9 +1,21 @@
-# Micro-benchmarks
-Small performance benchmarking scripts to test the JIT. Values in the exported functions can be adjusted to test a range of calls/iterations/number of elements. 
-## Factorial
-This script is adapted from [this blog post](https://www.hellorust.com/demos/factorial/index.html) on generating WebAssembly from Rust. 
-## Mandelbrot
+A suite of micro-benchmarks for measuring the performance of the
+[wasmjit-omr](https://github.com/wasmjit-omr/wasmjit-omr) JIT compiler.
 
-The Mandelbrot script is adapted from a `wasm` file found in [this repo](https://github.com/ColinEberhardt/wasm-mandelbrot), converted back to text using `wasm2wat`, with some additional manual edits.
-## Bubblesort
-This script was compiled from C, array size is limited to 100000 elements. 
+## Building and running
+
+Simply running `make` will build two versions of every benchmark, one in
+WebAssembly and the other as a native binary. A file name can also be
+specified as an argument to `make` to only build that file.
+
+To run the WebAssembly code, use [em-interp](https://github.com/wasmjit-omr/em-interp).
+For example:
+
+```
+$ make
+$ ./em-interp mandelbrot.wasm
+```
+
+## License
+
+The code is distributed under the terms of the
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
